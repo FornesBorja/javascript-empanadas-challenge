@@ -1,6 +1,16 @@
-# Compra de empanadas
+# Empanadas challenge🥟
+Welcome to the Empanadas Challenge! This project aims to solve a fun and challenging problem involving the purchase of empanadas with a unique pricing strategy.
 
-## Enunciado del problema
+## Table of Contents
+- [Problem](#problem)
+- [Running Tests](#running-tests)
+- [Explanation](#explanation)
+- [Stack](#stack)
+- [Authors](#authors)
+
+## Problem
+
+### Original Statement (Spanish)
 
 El profesor Maple se embarca en la tarea de adquirir empanadas para todos los participantes del bootcamp de programación. Dado que hoy es el Día de las Empanadas,  hay una oferta especial en la que te llevas hasta tres empanadas y solo pagas la más cara. Con un presupuesto ajustado para el curso, los profesores debaten para intentar minimizar el gasto total por todas las empanadas.
 
@@ -20,67 +30,30 @@ Ayúdales haciendo una función que lo calcule lo más rápido posible: hay dece
 
 Las empanadas que han elegido los profesores tienen 3, 4 o 5 ingredientes. La masa de una empanada vale 6 euros, y cada ingrediente adicional vale 2 euros. Así, las empanadas pueden valer 12, 14 o 16 euros. Se garantiza que el número total de empanadas será múltiplo de 3.
 
-## Entrada
+## Running Tests
 
-La función debe tener tres parámetros de entrada. Cada conjunto de entrada consta de tres enteros, a b c, que son el número de empanadas de 3, 4 y 5 ingredientes, respectivamente. Se garantiza que el número de empanadas, a + b + c, cumple que a + b + c < 40. Además, el número de empanadas es divisible entre 3.
-
-## Salida
-
-Por cada conjunto de entrada, retornar un único entero: la mínima cantidad de euros que se puede pagar para llevarse todas las empanadas.
-
-## Ejemplos de casos de uso
-
-| Entrada     | Salida      |
-| ----------- | ----------- |
-| 1, 1, 1     | 14          |
-| 3, 3, 0     | 26          |
-| 2, 0, 1     | 14          |
-| 9, 10, 11   | 142         |
-
-
-## Instrucciones de uso
-
-1. Clonar el repositorio
-3. Instalar las dependencias:
-
-    ```bash
-    npm install
-    ```
-
-4. Completar los argumentos y el cuerpo de la función `fn` en el archivo (`main.js`). No se debe renombrar la función `fn`.
-
-    ```javascript
-    // main.js
-    export const fn = (/* argumentos de la función */) => {
-    // Cuerpo de la función: Completa la lógica de la función aquí.
-    };
-    ```
-
-4. Ejecutar los test:
-    ```bash
-    npm run test
-    ```
-
-## Evaluación
-
-### Mínimo
-Para el APTO se deben pasar todos los test excepto los de validaciones de errores en la entrada de datos
-
-### Extra
-Pasar los test de validación de errores en la entrada de datos (Throws error)
-
-### Ejemplo de ejecución de algunos test
+To run tests, run the following command
 
 ```bash
-✓ main.test.js (7)
-   ✓ Function fn - Input Parameter Test Cases (7)
-     ✓ Case: fn(1, 1, 1) - Expected Result: 14
-     ✓ Case: fn(3, 3, 0) - Expected Result: 26
-     ✓ Case: fn(2, 0, 1) - Expected Result: 14
-     ✓ Case: fn(9, 10, 11) - Expected Result: 142
-     ✓ Throw error on negative input value: fn(-1, 3, 1)
-     ✓ Throws error when the total sum of inputs (2+2+1) is not a multiple of 3: fn(2, 2, 1)
-     ✓ Throws error when the total sum of inputs (15+15+20) is not less than 40: fn(15, 15, 20)
+  npm run test
 ```
+## Explanation
+
+First, I handled possible errors that may arise, such as having a negative number of empanadas, the sum not being a multiple of 3, or the sum of the empanadas being greater than 40. Then, I declared the necessary variables: in my case, "array_price," which will be an array with the price of the empanadas, and "price," which will later store the price of the empanadas.
+
+To avoid multiple "while" loops, I created a function that adds the necessary number of empanadas to the array as needed. The next step was to group the empanadas by price using "while" loops and calling the previously created function, but with the second argument set to one, since the repetition will be handled by the "while" loop.
+
+When there are no more empanadas to group, we call the function again, this time with arguments a, b, and c. Then, we sort the array from highest to lowest and iterate through it three by three, as we only pay for every three empanadas, adding the amount in that position of the array to "price." The total accumulated in "price" will be what we need to pay.
+
+## Stack
+
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![Node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) 
+
+
+## Authors
+
+- [@FornesBorja](https://github.com/FornesBorja)
+- Original repository: [empanadas challenge](https://github.com/GeeksHubsAcademy/javascript-empanadas-challenge)
+ 
 
  
