@@ -1,54 +1,50 @@
 export const fn = (a, b, c) => {
   if (a < 0 || b < 0 || c < 0) {
-    throw new Error("Los inputs no tienen que ser negativos");
+    throw new Error("The inputs can't be negative");
   }
   if ((a + b + c) % 3 !== 0) {
-    throw new Error("La suma de los inputs debe ser multiplo de 3");
+    throw new Error("The sum of the inputs must be a multiple of 3");
   }
   if (a + b + c >= 40) {
-    throw new Error("La suma de los inputs debe ser menor de 40");
+    throw new Error("The sum of the inputs must be less than 40");
   }
 
-  let precio_emp = [];
-  let dinero = 0;
+  let price = [];
+  let money = 0;
+
+  const addEmp = (price_emp, quantity) => {
+    for (let i = 0; i < quantity; i++) {
+      price.push(price_emp);
+    }
+  };
 
   while (a > 0 && c > 0) {
-    precio_emp.push(14);
+    addEmp(14,1);
     a -= 0.5;
     c -= 0.5;
   }
   while (a > 0 && b > 0) {
-    precio_emp.push(13);
+    addEmp(13,1);
     a -= 0.5;
     b -= 0.5;
   }
 
   while (b > 0 && c > 0) {
-    precio_emp.push(15);
+    addEmp(15,1);
     b -= 0.5;
     c -= 0.5;
   }
-  while (a > 0) {
-    precio_emp.push(12);
-    a--;
-  }
-  while (b > 0) {
-    precio_emp.push(14);
-    b--;
-  }
-  while (c > 0) {
-    precio_emp.push(16);
-    c--;
+  //Add the remaining empanadas
+  addEmp(12, a);
+  addEmp(14, b);
+  addEmp(16, c);
+
+  //Sort the array from highest to lowest.
+  price.sort((a, b) => b - a);
+  //Calculate the total cost, skipping every 3, since we only pay for 1 out of every 3 empanadas.
+  for (let i = 0; i < price.length; i += 3) {
+    money += price[i];
   }
 
-  precio_emp.sort().reverse();
-  console.log(precio_emp);
-  let comprar = Math.floor(precio_emp.length / 3);
-  let a_pagar = precio_emp.slice(0, comprar);
-  console.log(a_pagar);
-  for (let i = 0; i < a_pagar.length; i++) {
-    dinero += a_pagar[i];
-  }
-
-  return dinero;
+  return money;
 };
